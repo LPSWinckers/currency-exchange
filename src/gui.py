@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-from plotting import create_plot
 import csv
+from exchange_api import get_exchange_rate
 
 file_path = 'src\currency.csv'
 
@@ -10,18 +9,17 @@ with open(file_path, 'r', encoding='utf-8') as f:
     reader = csv.reader(f)
     data = list(reader)
 
-def on_button_click(from_currency, to_currency, currency_sign, currency_sign2, Time_period):
+def on_button_click(from_currency, to_currency, amount, exchange_rate, result_var):
     """Event handler for the button click."""
-    print(from_currency.get(), to_currency.get())
+    exchange_rate = get_exchange_rate(from_currency.get(), to_currency.get())
+
+    result_var.set(float(amount.get()) * float(exchange_rate['data'][to_currency.get()]))
 
 def from_currency_changed(event, currency_sign):
     """Event handler for the from_currency combobox."""
     for row in data:
         if row[0] == event.widget.get():
             currency_sign["text"] = row[2]
-    
-
-    
 
 def setup_gui():
     root = tk.Tk()
@@ -47,7 +45,7 @@ def setup_gui():
     to_currency.pack(side=tk.LEFT)
 
     button = tk.Button(topbox, text="Get exchange rate")
-    button["command"] = lambda: on_button_click(from_currency, to_currency, currency_sign, currency_sign2, Time_period)
+    button["command"] = lambda: on_button_click(from_currency, to_currency, amount, exchange_rate, result_var)
     button.pack(side=tk.LEFT)
 
     bottombox = tk.Frame(root)
@@ -64,21 +62,12 @@ def setup_gui():
     equals_sign = tk.Label(bottombox, text="=")
     equals_sign.pack(side=tk.LEFT)
 
-    exchange_rate = tk.Entry(bottombox)
+    result_var = tk.StringVar()
+    exchange_rate = tk.Entry(bottombox, textvariable=result_var)
     exchange_rate.pack(side=tk.LEFT)
     exchange_rate['state'] = 'readonly'
 
     currency_sign2 = tk.Label(bottombox, text="$")
     currency_sign2.pack(side=tk.LEFT)
 
-    Time_period = ttk.Combobox(bottombox)
-    Time_period["values"] = ["1 day", "1 week", "1 month", "1 year"]
-    Time_period["state"] = "readonly"
-    Time_period.current(0)
-    Time_period.pack(side=tk.LEFT)
-
-    fig = create_plot()  # Get the plot from the plotting module
-    canvas = FigureCanvasTkAgg(fig, master=root)  # Embed the plot in Tkinter
-    canvas.draw()
-    canvas.get_tk_widget().pack()
     return root

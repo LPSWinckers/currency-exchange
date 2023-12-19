@@ -1,10 +1,16 @@
-import os
 import requests
+from requests.structures import CaseInsensitiveDict
 
-api_key = "cur_live_6Mcs1nHLUbsS5wqlJJcizUiDUGjXJidmfigGdbTR"
+api_key = "fca_live_TkJkw5715P9KGDkWBgnIPY8brYjVu858KbO3tY24"
 
 def get_exchange_rate(from_currency, to_currency):
-    """Returns the exchange rate from one currency to another."""
-    url = f'https://api.currencyapi.com/v3/latest?apikey={api_key}&currencies={to_currency}&base_currency={from_currency}'
-    response = requests.get(url)
-    return response.json()["data"][f"{to_currency}"]
+    if from_currency == to_currency:
+        return 1
+    elif from_currency == "USD":
+        url = f"https://api.freecurrencyapi.com/v1/latest?apikey={api_key}&currencies={to_currency}"
+    else:
+        url = f"https://api.freecurrencyapi.com/v1/latest?apikey={api_key}&currencies={to_currency}&base_currency={from_currency}"
+
+    respone = requests.get(url)
+
+    return respone.json()
