@@ -1,5 +1,4 @@
 import requests
-from requests.structures import CaseInsensitiveDict
 
 api_key = "fca_live_TkJkw5715P9KGDkWBgnIPY8brYjVu858KbO3tY24"
 
