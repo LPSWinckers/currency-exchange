@@ -1,12 +1,33 @@
-USD,United States Dollar,$
 EUR,Euro,€
-GBP,British Pound,£
-INR,Indian Rupee,₹
-AUD,Australian Dollar,$
-CAD,Canadian Dollar,$
-SGD,Singapore Dollar,$
-CHF,Swiss Franc,CHF
-MYR,Malaysian Ringgit,RM
+USD,US Dollar,$
 JPY,Japanese Yen,¥
-CNY,Chinese Yuan Renminbi,¥
+BGN,Bulgarian Lev,лв
+CZK,Czech Republic Koruna,Kč
+DKK,Danish Krone,kr
+GBP,British Pound Sterling,£
+HUF,Hungarian Forint,Ft
+PLN,Polish Zloty,zł
+RON,Romanian Leu,lei
+SEK,Swedish Krona,kr
+CHF,Swiss Franc,Fr
+ISK,Icelandic Króna,kr
+NOK,Norwegian Krone,kr
+HRK,Croatian Kuna,kn
+RUB,Russian Ruble,₽
+TRY,Turkish Lira,₺
+AUD,Australian Dollar,$
+BRL,Brazilian Real,R$
+CAD,Canadian Dollar,$
+CNY,Chinese Yuan,¥
+HKD,Hong Kong Dollar,$
+IDR,Indonesian Rupiah,Rp
+ILS,Israeli New Sheqel,₪
+INR,Indian Rupee,₹
+KRW,South Korean Won,₩
+MXN,Mexican Peso,$
+MYR,Malaysian Ringgit,RM
 NZD,New Zealand Dollar,$
+PHP,Philippine Peso,₱
+SGD,Singapore Dollar,$
+THB,Thai Baht,฿
+ZAR,South African Rand,R
